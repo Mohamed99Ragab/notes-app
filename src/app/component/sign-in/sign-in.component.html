@@ -1,0 +1,36 @@
+<section id="signIn">
+    
+    <div class="container">
+
+       <form class="w-50 mx-auto"[formGroup]="signIn" (ngSubmit)="formData()">
+
+            <input [class.is-valid]="signIn.controls.email.status=='VALID'" formControlName="email" type="email"class="form-control my-3" placeholder="Enter Your Email">
+            <div *ngIf="signIn.controls.email.errors && signIn.controls.email.touched" class="alert alert-danger mt-1">
+                Email Is required and Not vaild
+            </div>
+
+            <input [class.is-valid]="signIn.controls.password.status=='VALID'" formControlName="password" type="password"class="form-control my-3" placeholder="Enter Your Password">
+            <div *ngIf="signIn.controls.password.errors && signIn.controls.password.touched" class="alert alert-danger mt-1">
+                Password :
+                <ul>
+                    <li>Is required</li>
+                    <li>Minimum 6 characters</li>
+                   
+                    
+                </ul>            
+            </div>
+            <button class="btn btn-info w-100" type="submit ">
+                <span *ngIf="!isClicked">Sign In</span>
+                <span *ngIf="isClicked">Wating...</span>
+
+            </button>
+            <br>
+           
+      
+        </form>
+        
+    </div>
+    
+
+
+</section>

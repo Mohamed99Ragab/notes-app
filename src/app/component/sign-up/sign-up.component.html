@@ -1,0 +1,64 @@
+
+<section id="signUp">
+    
+    <div class="container">
+
+       <form class="w-50 mx-auto"[formGroup]="signUp" (ngSubmit)="formData()" autocomplete="off">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <input [class.is-valid]="signUp.controls.first_name.status=='VALID'"  formControlName="first_name"  type="text"class="form-control mb-3 mb-md-auto" placeholder="Enter Your First Name">
+                    <div *ngIf="signUp.controls.first_name.errors && signUp.controls.first_name.touched" class="alert alert-danger mt-1">
+                        First name is required
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <input  [class.is-valid]="signUp.controls.last_name.status=='VALID'" formControlName="last_name"  type="text"class="form-control" placeholder="Enter Your Last Name">
+                    <div *ngIf="signUp.controls.last_name.errors && signUp.controls.last_name.touched" class="alert alert-danger mt-1">
+                        Last name is required
+                    </div>
+                </div>
+            </div>
+            <input [class.is-valid]="signUp.controls.email.status=='VALID'" formControlName="email" type="email"class="form-control my-3" placeholder="Enter Your Email">
+            <div *ngIf="signUp.controls.email.errors && signUp.controls.email.touched" class="alert alert-danger mt-1">
+                
+                <small *ngIf="signUp.controls.email.errors['required']">Email Is required</small>
+                <small *ngIf="signUp.controls.email.errors['email']">Email Not vaild</small>
+            </div>
+            <input [class.is-valid]="signUp.controls.age.status=='VALID'" formControlName="age" type="number"class="form-control my-3" placeholder="Enter Your Age">
+            <div *ngIf="signUp.controls.age.errors && signUp.controls.age.touched" class="alert alert-danger mt-1">
+                Age is required
+            </div>
+            <input [class.is-valid]="signUp.controls.password.status=='VALID'" formControlName="password" type="password"class="form-control my-3" placeholder="Enter Your Password">
+            <div *ngIf="signUp.controls.password.errors && signUp.controls.password.touched" class="alert alert-danger mt-1">
+                <small *ngIf="signUp.controls.password.errors['required']">Password is required</small>
+                <ul *ngIf="signUp.controls.password.errors['pattern']">
+                    <li>Minimum 6 characters</li>
+                    <li>at least one uppercase letter</li>
+                    <li>one lowercase letter</li>
+                    <li>one number</li>
+                    <li>one special character</li>
+                </ul>
+            </div>
+            <button [disabled]="signUp.invalid"[ngStyle]="signUp.invalid?styleIsNotValid:styleIsValid" class="btn btn-info w-100" type="submit ">
+                <span *ngIf="!isClicked">sign Up</span>
+                <span *ngIf="isClicked">Wating...</span>
+            
+            </button>
+           <br>
+            <div *ngIf="successMessage" class="alert alert-success my-1">
+                {{successMessage}}
+            </div>
+    
+            <div *ngIf="errorMessage" class="alert alert-danger my-1">
+                {{errorMessage}}
+            </div>
+       
+        </form>
+       
+       
+    </div>
+    
+
+
+</section>

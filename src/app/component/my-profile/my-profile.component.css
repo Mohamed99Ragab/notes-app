@@ -1,0 +1,28 @@
+
+
+
+#profile
+{
+    background-color: #666;
+    min-height: 100vh;
+}
+
+.note
+{
+    background-color: #cfc;
+    padding: 15px;
+}
+
+i
+{
+    cursor: pointer;
+}
+
+
+#empty
+{
+  position: relative;
+  top: 200px;
+  
+}
+
